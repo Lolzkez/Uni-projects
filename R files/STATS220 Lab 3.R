@@ -1,0 +1,7 @@
+library(tidyverse)
+villagers <- read.csv("data/animal-crossing/villagers.csv")
+p1 <- ggplot(data = villagers, aes(x = personality)) + geom_bar(stat = "count")
+p2 <- ggplot(data = villagers, aes(x = personality, fill = gender)) + geom_bar(stat = "count")
+p3 <- ggplot(data = villagers) + geom_bar(stat = "count", aes(x = personality, fill = gender), colour = "black")
+p4 <- p3 + coord_polar()
+p5 <- p4 + facet_wrap(~species)

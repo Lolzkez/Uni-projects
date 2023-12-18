@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=OpenSans|Poppins">
+<title>Carbon Easy!</title>
+</head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="w3.css">
+<style>
+    p {font-family: "OpenSans", sans-serif;}
+    button {font-family: "OpenSans", sans-serif;}
+    a.pop{font-family: "Poppins", sans-serif;
+        font-weight: 800;}
+    a.pop2{font-family: "Poppins", sans-serif;
+        font-weight: 500;}
+    h1.pop{font-family: "Poppins", sans-serif;
+        font-weight: 800;}
+    h3.pop{font-family: "Poppins", sans-serif;
+        font-weight: 550;}
+    a.hover {text-decoration: underline 3px;
+        text-decoration-color: #82f900;
+        border-radius: 2.5px;
+        text-underline-position: under;}
+</style>
+<body>
+<div class="w3-bar custom-colour custom-background-colour w3-text-black">
+    <div class="w3-left">
+        <a href="index.html" class="w3-bar-item w3-button w3-padding-16 w3-white"><img src="logo.jpg" width="45" height="45"> </a>
+        <a href="index.html" class="w3-bar-item w3-button w3-hover-white w3-center w3-padding-20 w3-xlarge pop"> Carbon Easy!</a>
+    </div> 
+    <div class="w3-right">
+        <a href="#" class="w3-bar-item w3-button w3-hover-white w3-padding-27 hover pop2">About</a>
+        <a href="#" class="w3-bar-item w3-button w3-hover-white w3-padding-27 hover pop2">Contact</a>
+        <a href="#" class="w3-bar-item w3-button w3-hover-white w3-padding-27 hover pop2">Calculator</a>    
+        <a href="#" class="w3-bar-item w3-button w3-hover-white w3-padding-27 hover pop2">Login</a>    
+    </div>
+</div>
+<div class="hero-image">
+    <div class="w3-panel h-text w3-display-right">
+        <h1 class="w3-right-align w3-text-white pop"><b>Become a <span class="text-custom-colour">Hero</span> of Climate Change</b></h1>
+        <p class="w3-right-align w3-text-white">Climate change is here. <br>
+            We are going through the biggest crisis of our lifetime<br>and we need <span class="text-custom-colour">you</span> to be a hero in your community.<br><br>
+        </p>
+        <button onclick="document.getElementById('trigger-modal').style.display='block'" class="w3-btn w3-text-white w3-round-large w3-right w3-right-align w3-border border-custom-colour hover-custom-colour">Register your interest</button>
+    </div>
+</div>
+<div id="trigger-modal" class="w3-modal w3-animate-opacity">
+    <div class="w3-modal-content">
+        <header class="w3-container custom-colour w3-text-black w3-center">
+            <span onclick="document.getElementById('trigger-modal').style.display='none'" class="w3-button w3-display-topright">&times;</span>
+            <h3 class="pop">Registration</h3>
+        </header>
+        <div id="form-ct">
+            <form class="w3-container custom-background-colour" action="/action_page.php">
+                <div id="userInfo">
+                    <p>
+                        <label for="fname">First Name</label>
+                        <input class="w3-input" placeholder="Enter First Name" id="fname" type="text" required>
+                    </p>
+                    <p>
+                        <label for="lname">Last Name</label>
+                        <input class="w3-input" placeholder="Enter Last Name" id="lname" type="text" required>
+                    </p>
+                    <p>
+                        <label for="username">Username</label>
+                        <input class="w3-input" placeholder="Enter Username" id="username" type="text" required>
+                    </p>
+                    <p>
+                        <label for="pwd">Password</label>
+                        <input class="w3-input" placeholder="Enter Password" id="pwd" type="password" required>
+                    </p>
+                </div>
+                <br>
+                <div id="addressInfo">
+                    <p>
+                        <label for="homeadd">Home Address</label>
+                        <input class="w3-input" placeholder="Enter Home Address" id="homeadd" type="text" required>
+                    </p>
+                    <p>
+                        <label for="workadd">Work Address</label>
+                        <input class="w3-input" placeholder="Enter Work Address" id="wordadd" type="text" required>
+                    </p>
+                </div>
+                <br>
+                <div id="contactInfo">
+                    <p>
+                        <label for="mobile">Mobile</label>
+                        <input class="w3-input" placeholder="Enter Mobile Number" id="mobile" type="number" required>
+                    </p>
+                    <p>
+                        <label for="email">Email Address</label>
+                        <input class="w3-input" placeholder="Enter Email Address" id="email" type="text" required>
+                    </p>
+                </div>
+                <div class="w3-container w3-center">
+                    <p>
+                    <button type="submit" class="w3-btn w3-text-black hover-custom-colour custom-colour4 w3-border border-custom-colour w3-round-xlarge w3-padding">Register</button>
+                    <br></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<div>
+    <div class="w3-cell-row">
+        <div class="w3-container w3-center w3-cell" style="width:33.33%">
+            <h3 class="underline pop">Who we are</h3>
+            <p>At Carbon Easy, we are a company dedicated to reducing the carbon footprint of 
+                people all around the world. Using education, activites and community action, 
+                we believe in a carbon-neutral and sustainable future!
+                <br>
+                <br>
+                Founded in 1997, we have been dedicated to making the world more sustainable for over
+                30 years, forever fighting for a better future for all living things on Earth.
+            </p>
+        </div>
+        <div class="w3-container w3-center w3-cell" style="width:33.33%">
+            <h3 class="underline pop">What we do</h3>
+            <p>Our company provides education to many schools, businesses, companies and more about 
+                how to reduce their carbon footprint. Education has been shown as the best way for
+                change for many years, and by educating, we can change the way people live.
+                <br><br>We also provide community activites, getting more people working together in 
+                order to live a more sustainable future. Organising community gardens, recycling, and 
+                consulting with public transport are just some of the activities we do for the community.
+            </p>
+        </div>
+        <div class="w3-container w3-center w3-cell" style="width:33.33%">
+            <h3 class="underline pop">Contact</h3>
+            <br>
+            <p><b>Phone number:</b> 01 232 1421 </p>
+            <p><b>Email:</b> abcd@carboneasy.com</p>
+            <p><b>Address:</b> 22034 Houston Road, Harlem, New York, 29032</p>
+        </div>
+</div>
+</div>
+<script>
+    // Get the modal
+    var modal = document.getElementById('trigger-modal');
+    
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+</script>
+    
+</body>
+</html> 

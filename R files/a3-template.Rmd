@@ -1,0 +1,102 @@
+---
+title: Assignment 3
+output: 
+  html_document:
+    self_contained: true
+    toc: true
+    toc_float: true
+---
+
+```{r setup, include = FALSE}
+library(knitr)
+opts_knit$set(root.dir = here::here())
+opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, comment = "#>", 
+  tidy = "styler", fig.retina = 3)
+```
+
+<!-- DO NOT edit anything above! -->
+
+```{r pkgs, echo = FALSE}
+# include all packages you need in this chunk
+library(rvest)
+library(lubridate)
+library(tidyverse)
+library(RColorBrewer)
+```
+
+```{r data-read}
+nycbikes18 <- read_csv("data/2018-citibike-tripdata.csv",
+  locale = locale(tz = "America/New_York"))
+```
+
+## Q1: Web scraping
+
+```{r web-scrape}
+library(rvest)
+library(tidyverse)
+link <- "https://www.citibikenyc.com/pricing"
+pricing <- read_html(link)
+pricing_titles <- pricing %>%
+  html_elements("h2") %>%
+  html_text()
+pricing_titles_final <- pricing_titles[1:3]
+prices <- pricing %>%
+  html_elements(".type-alpha--m") %>%
+  html_text()
+desc <- pricing %>%
+  html_elements("p.type-alpha--s") %>%
+  html_text()
+desc <- desc [1:3]
+df <- data.frame(Plan=pricing_titles_final, Price=prices, Minutes=desc)
+knitr::kable(df)
+```
+
+## Q2: Critique
+I believe that the decision to derive the age of users based on their birth year in 2018 was a poor call. This is because it does not take into account the birth date & when the data was collected, which would affect what age group the person is placed in and skew the data slightly.
+
+## Q3: Polishing
+
+```{r polish}
+abc <- nycbikes18 %>%
+  mutate(month = month(starttime, label = TRUE)) %>%
+  mutate(gender = case_when(gender == 2 ~ "female", gender == 1 ~ "male", gender == 0 ~ "unknown")) %>%
+  mutate(gender = as.factor(gender)) %>%
+  group_by(month, gender) %>%  
+  summarise(ntrips = n()) %>%
+  ungroup(gender)%>%
+  mutate(gender = fct_reorder(gender, ntrips, min))
+p4 <- ggplot(abc, aes(x = gender, y = ntrips, fill = month)) + geom_col(position = "dodge") +
+  labs(x = "Gender", y = "Number of Trips", fill = "Month", title = "Number of Bike Trips Taken for each Gender per Month")
+p4
+```
+
+I cleaned up the axis labels, and added a title so that it would be more clear.
+
+## Q4: Exploration
+For this question, I wanted to know which age group rode their bikes the most. Graph P3 in Assignment 2 gave the trip duration, however I want to know the frequency of trips taken per age group. I had to make a table just to do this. I also had to make a larger palette as the ones shown on the slides only had 8 colours in each palette and I needed 12.
+
+The group with the most bike rides was the 25-44 year old group, while the group with the least bike rides (apart from the NA group, who are either very elderly or hiding their age) is the 65+ group. This makes sense as there are a large amount of people within the ages of 25-44 (roughly 40% of all people in 2019 according to Statista), and the elderly are less willing to ride a bike. People also ride their bikes most frequently during June, July and August, as those are the summer months in the Northern Hemisphere. There are also high amounts of bike rides during the Autumn months, likely due to the beauty of Autumn.
+
+Because this data was collected in 2018, I would like to see what happens in the years after, if there are any changes to the ratio shown on this graph. I can use this graph to predict which age group is more likely to hire a bike, in order to advertise the brand to them in order to get more profit. I could also include gender so that I get a better understanding of who is more frequently using our bikes.
+
+## Appendix
+
+```{r appendix}
+nycbikes18_age <- nycbikes18 %>%
+  mutate(tripduration = tripduration/60,
+         birth_year = replace(birth_year, birth_year < 1900, NA_real_ ),
+         age = 2018 - birth_year,
+         age_group = cut(age, breaks = c(-1,14,24,44,64, Inf), labels = c('[0-14]','(14-24]','(25-44]','(44-64]','65+'), right = TRUE, include.lowest = FALSE))
+nb.cols <- 12
+mycolours <- colorRampPalette(brewer.pal(8, "Set2"))(nb.cols)
+age_group_month <- nycbikes18_age %>%
+  mutate(month = month(starttime, label = TRUE)) %>%
+  group_by(age_group, month) %>%
+  summarise(ntrips = n())%>%
+  ungroup()
+p7 <- ggplot(age_group_month, aes(x=age_group, y=ntrips, fill=month)) + 
+  geom_col(position = "dodge") + 
+  scale_fill_manual(values = mycolours) + 
+  labs(x = "Age Group", y = "Number of Trips", fill = "Month", title = "Number of Bike Trips Taken for each Age Group per Month")
+p7
+```

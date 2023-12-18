@@ -1,0 +1,56 @@
+---
+title: "lab 8"
+author: "Jp"
+date: "`r lubridate::today()`"
+output: html_document
+---
+
+```{r setup, include = FALSE}
+library(knitr)
+opts_knit$set(root.dir = here::here())
+opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, fig.retina = 3,
+  comment = "#>")
+```
+
+```{r prep}
+library(tidyverse)
+library(lubridate)
+daily_aqi <- read_csv("data/akl-aqi19.csv")
+aqi_cat <- fct_inorder(c("Good", "Moderate", "Unhealthy for Sensitive",
+  "Unhealthy", "Very Unhealthy", "Hazardous"))
+aqi_pal <- setNames(
+  c("#00E400", "#FFFF00", "#FF7E00", "#FF0000", "#8F3F97", "#7E0023"),
+  aqi_cat)
+```
+
+```{r tibble}
+library(tidyverse)
+daily_aqi <- daily_aqi%>%
+  mutate(aqi_cat = cut(max_aqi, breaks = c(0, 51, 101, 151, 201, 301, Inf), labels = aqi_cat, include.lowest = TRUE),
+         Month = month(date, label = TRUE),
+         mday = day(date))
+print(daily_aqi)
+
+```
+```{r table}
+table <- daily_aqi%>%
+  group_by(Month, aqi_cat, .drop = FALSE)%>%
+  summarise(n=n())%>%
+  pivot_wider(names_from = aqi_cat,
+              values_from = n)%>%
+  ungroup()
+kable(table)
+```
+**The reason for the unusually bad air quality in October 2019 in Auckland was due to a fire in the SkyCity Convention Centre on the 22nd, which lasted more than 48 hours.**
+```{r heatmap}
+p1 <- ggplot(daily_aqi, aes(mday, Month, fill = aqi_cat, width = 0.95, height = 0.95, Layer = 1))+
+  geom_tile() +
+  geom_text(aes(label = max_aqi), size = 3)+
+  scale_fill_manual(values = aqi_pal, expand = expansion(), drop = FALSE, name = "AQI") +
+  coord_fixed()+
+  theme(legend.position = "top") +
+  scale_y_discrete(limits = rev(month.abb), expand = expansion()) + 
+  labs(y = "Month", x = "Day of the Month")
+p1
+```
+**
