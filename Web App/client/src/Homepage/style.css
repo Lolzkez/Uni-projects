@@ -1,0 +1,86 @@
+.homepage {
+  width: 100vw;
+  height: 90vh;
+  background-color: #865dff;
+  box-sizing: border-box;
+  padding: 2vw;
+}
+
+.homepage .quiz-buttons {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.homepage .available-quizzes {
+  background-color: #000000;
+  height: 100%;
+  width: 49%;
+  border-radius: 4%;
+  box-sizing: border-box;
+  color: white;
+  font-family: "Montserrat", Helvetica;
+  font-size: 5vh;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  flex-direction: column;
+}
+
+.homepage .past-quizzes {
+  background-color: #000000;
+  height: 48%;
+  width: 49%;
+  border-radius: 1vw;
+  top: 0px;
+  right:0px;
+  box-sizing: border-box;
+  color: white;
+  font-family: "Montserrat", Helvetica;
+  font-size: 5vh;
+  position: absolute;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  flex-direction: column;
+}
+
+.homepage .practice-quizzes {
+  background-color: #000000;
+  height: 48%;
+  width: 49%;
+  border-radius: 1vw;
+  right: 0px;
+  box-sizing: border-box;
+  color: white;
+  bottom: 0px;
+  font-family: "Montserrat", Helvetica;
+  font-size: 5vh;
+  position: absolute;
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  flex-direction: column;
+}
+
+.homepage .green-circle {
+  width: 10vh;         
+  height: 10vh;
+  background-color: #00ff0a;
+  border-radius: 50%;
+  order: 1;  
+}
+
+.homepage .green-square {
+  background-color: #00ff0a;
+  width: 8vh;
+  height: 8vh;
+}
+
+.homepage .green-triangle {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 100px solid #00ff0a;
+}

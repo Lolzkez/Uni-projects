@@ -1,0 +1,119 @@
+.login-page {
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #865dff;
+    position: relative;
+    overflow: hidden;
+  }
+
+.login-page .left-rectangle {
+  background-color: #FFA3FD;
+  border-radius: 20px;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
+  width: 55vw;
+  height: 86vh;
+  box-shadow: 0 5px 3px rgba(0, 0, 0, 1);  /* Shadow effect */
+  top: 7vh;
+  left: 4vw;
+  position: absolute;
+  box-sizing: border-box;
+  padding: 3vw;
+}
+
+.login-page .right-rectangle {
+  background-color: white;
+  border-radius: 20px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  width: 37vw;
+  height: 86vh;
+  box-shadow: 0 5px 5px rgba(0, 0, 0, 1);  /* Shadow effect */
+  top: 7vh;
+  right: 4vw;
+  position: absolute;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.login-page .login-blurb {
+  font-family: monospace;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.login-page .login-title {
+  font-family: monospace;
+  font-size: 2rem;
+  font-weight: 400;
+  left: 1.5vw;
+  position: absolute;
+  margin-bottom: 8vh;
+  top: 1.5vh;
+}
+
+h1 {
+  margin-bottom: 15px;
+}
+
+h3 {
+  margin-top: -10px;
+  margin-bottom: 10vh;
+}
+
+.login-page .login-form {
+  left: 1.5vw;
+  top: 16vh;
+  position: absolute;
+  width: 100vw;
+}
+
+.login-page .input-field {
+  align-items: flex-start;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+  width: 33%;
+  justify-content: flex-end;
+  position: relative;
+}
+
+.login-page .form-label {
+  font-family: monospace;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.login-page .input-field {
+  border-radius: 10px;
+  height: 5vh;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5); 
+  margin-bottom: 2vh;
+}
+
+.login-page .form-button {
+  color: white;
+  background-color: black;
+  font-size: 1.5vmax;
+  border-radius: 40vmax;
+  box-shadow: 0 3px 3px rgba(0, 0, 0, 0.5);
+  margin-bottom: 5vh;
+  width: 33%;
+  position: relative;
+  margin-top: 3vh;
+}
+
+.modal {
+  z-index: 10000 !important;
+  position: fixed !important;
+  top: 0 !important; 
+  left: 0 !important;
+  display: flex !important;
+}
+
+.modal-dialog {
+  width: 30% !important;
+  top: 5%;
+}

@@ -1,0 +1,77 @@
+.navbar {
+    background-color: black;
+    height: 10vh;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2%;
+}
+
+.navbar .btn-title {
+    color: #ffa3fd;
+    font-family: "Montserrat", Helvetica;
+    font-size: 2rem;
+    border-radius: 20px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: black;
+    border-color: #ffa3fd;
+    width: fit-content !important; 
+    height: 70%; 
+    white-space: nowrap;
+    margin-left: 2%;
+}
+
+.d-flex {
+    flex: 2;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 2%;
+}
+
+.navbar-username {
+    color: #ffffff;
+    font-family: "Montserrat", Helvetica;
+    font-size: 1.2rem;
+    margin-right: 2%;
+}
+
+.logout {
+    font-size: 1.2rem;
+}
+
+.navbar .btn-results {
+  color: #ffa3fd;
+  background-color: black;
+  margin-left: 50px;
+  font-size: x-large;
+  text-shadow: 0px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+  border: #ffa3fd 2px solid;
+}
+
+.navbar .btn:hover {
+  color: #ffffff;
+  background-color: #ffa3fd;
+  border: #ffffff 2px solid;
+}
+
+
+@media only screen and (min-width: 1500px) {
+    .navbar .title {
+      font-size: 3rem;
+      
+    }
+  
+    .navbar-username {
+      font-size: 1.7rem;
+    }
+  
+    .logout {
+      font-size: 2.5rem;
+    }
+  }
